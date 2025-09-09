@@ -7,26 +7,32 @@ class User {
   final String email;
   final String profilePicture;
 
-  User({required this.id, required this.name, required this.email, required this.profilePicture});
+  User({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.profilePicture,
+  });
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
       id: json['id'],
-      name: json['name'],
+      name: "${json['first_name']} ${json['last_name']}", // combine first + last
       email: json['email'],
-      profilePicture: 'https://i.pravatar.cc/150?img=${json['id']}', // Fake image URL
+      profilePicture: json['avatar'], // use avatar URL directly
     );
   }
 }
 
 class ApiService {
-  static const String baseUrl = 'https://jsonplaceholder.typicode.com';
+  static const String baseUrl = 'https://reqres.in/api';
 
   Future<List<User>> fetchUsers() async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl/users'));
+      final response = await http.get(Uri.parse('$baseUrl/users?page=1'));
       if (response.statusCode == 200) {
-        List<dynamic> jsonList = jsonDecode(response.body);
+        final decoded = jsonDecode(response.body);
+        final List<dynamic> jsonList = decoded['data']; // extract data list
         return jsonList.map((json) => User.fromJson(json)).toList();
       } else {
         throw Exception('Failed to load users: ${response.statusCode}');
