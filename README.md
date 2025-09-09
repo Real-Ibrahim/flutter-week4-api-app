@@ -1,16 +1,20 @@
-# api_service_week4
+# Flutter Week 4: API Integration App
 
-A new Flutter project.
+A Flutter app that fetches user data from JSONPlaceholder API, displays it in a list, and shows user profiles with error handling and loading indicators.
 
-## Getting Started
+## Features
+- Fetches user data (name, email) from JSONPlaceholder.
+- Displays users in a `ListView` with profile pictures.
+- Shows user details on a profile screen.
+- Handles errors with messages and shows a loading spinner.
 
-This project is a starting point for a Flutter application.
+## Setup Instructions
+1. Clone: `git clone https://github.com/Real-Ibrahim/flutter-week4-api-app`
+2. Navigate: `cd api_service_week4`
+3. Install: `flutter pub get`
+4. Run: `flutter run`
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Prerequisites
+- Flutter SDK
+- Emulator or device
+- Internet connection for API calls
